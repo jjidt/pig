@@ -61,4 +61,15 @@ describe 'Game' do
     test_game = Game.new
     expect(test_game).to be_an_instance_of Game
   end
+
+  it 'initializes with two players, one with a name, and one called the computer' do
+    test_game = Game.new("steve")
+    expect(test_game.players[0].name).to eq "steve"
+  end
+
+  it 'sets a turn that starts with the human player' do
+    test_game = Game.new("bob")
+    expect(test_game.turn).to eq 0
+  end
+
 end
