@@ -30,4 +30,12 @@ describe 'Player' do
     test_player = Player.new("Ronald")
     expect(test_player.score).to eq 0
   end
+
+  describe 'add_to_score' do
+    it 'adds an amount to a players score' do
+      test_player = Player.new("rick")
+      test_player.add_to_score(8)
+      expect(test_player.score).to eq 8
+    end
+  end
 end
