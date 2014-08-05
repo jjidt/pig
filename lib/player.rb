@@ -11,4 +11,7 @@ class Player
     @score += number
   end
 
+  def has_won?
+    @score > 99
+  end
 end

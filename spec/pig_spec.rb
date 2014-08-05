@@ -38,4 +38,19 @@ describe 'Player' do
       expect(test_player.score).to eq 8
     end
   end
+
+  describe 'has_won?' do
+    it 'checks if a player has under a hundred points' do
+      test_player = Player.new("carl")
+      test_player.add_to_score(99)
+      expect(test_player.has_won?).to eq false
+    end
+
+    it 'checks if a player has over a ninety-nine points' do
+      test_player = Player.new("carl")
+      test_player.add_to_score(100)
+      expect(test_player.has_won?).to eq true
+    end
+
+  end
 end
