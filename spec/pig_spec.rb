@@ -79,4 +79,16 @@ describe 'Game' do
     expect(test_game.turn).to eq 0
   end
 
+  describe 'take_turn' do
+    it 'has the current player take a turn rolling the dice and returns the dice values' do
+      test_game = Game.new("bob")
+      expect(test_game.take_turn).to be_an_instance_of Array
+    end
+
+    it 'switches the turn counter to the next player' do
+      test_game = Game.new("bob")
+      test_game.take_turn
+      expect(test_game.turn).to eq 1
+    end
+  end
 end
