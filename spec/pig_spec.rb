@@ -1,6 +1,7 @@
 require 'rspec'
 require 'dice'
 require 'player'
+require 'game'
 
 describe 'Dice' do
   it 'creates a single instance of dice' do
@@ -46,11 +47,18 @@ describe 'Player' do
       expect(test_player.has_won?).to eq false
     end
 
-    it 'checks if a player has over a ninety-nine points' do
+    it 'checks if a player has over ninety-nine points' do
       test_player = Player.new("carl")
       test_player.add_to_score(100)
       expect(test_player.has_won?).to eq true
     end
 
+  end
+end
+
+describe 'Game' do
+  it 'creates a new game' do
+    test_game = Game.new
+    expect(test_game).to be_an_instance_of Game
   end
 end
