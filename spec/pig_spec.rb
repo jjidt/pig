@@ -1,5 +1,6 @@
 require 'rspec'
 require 'dice'
+require 'player'
 
 describe 'Dice' do
   it 'creates a single instance of dice' do
@@ -12,4 +13,11 @@ describe 'Dice' do
     expect(test_dice.number).to be_an_instance_of Fixnum
   end
 
+end
+
+describe 'Player' do
+  it 'creates a new player' do
+    test_player = Player.new
+    expect(test_player).to be_an_instance_of Player
+  end
 end
