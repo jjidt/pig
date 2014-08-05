@@ -25,4 +25,9 @@ describe 'Player' do
     test_player = Player.new("steve")
     expect(test_player.name).to eq "steve"
   end
+
+  it 'initializes with a default score of zero' do
+    test_player = Player.new("Ronald")
+    expect(test_player.score).to eq 0
+  end
 end
