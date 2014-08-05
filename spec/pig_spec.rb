@@ -20,4 +20,9 @@ describe 'Player' do
     test_player = Player.new
     expect(test_player).to be_an_instance_of Player
   end
+
+  it 'initializes a new player with a name' do
+    test_player = Player.new("steve")
+    expect(test_player.name).to eq "steve"
+  end
 end
