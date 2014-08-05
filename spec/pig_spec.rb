@@ -52,7 +52,14 @@ describe 'Player' do
       test_player.add_to_score(100)
       expect(test_player.has_won?).to eq true
     end
+  end
 
+  describe 'roll_dice' do
+    it 'creates two new dice' do
+      test_player = Player.new("carl")
+      test_player.roll_dice
+      expect(test_player.dice[0]).to be_an_instance_of Dice
+    end
   end
 end
 

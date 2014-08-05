@@ -1,6 +1,6 @@
 class Player
 
-  attr_reader :name, :score
+  attr_reader :name, :score, :dice
 
   def initialize(name = nil)
     @name = name
@@ -13,5 +13,9 @@ class Player
 
   def has_won?
     @score > 99
+  end
+
+  def roll_dice
+    @dice = [Dice.new, Dice.new]
   end
 end
