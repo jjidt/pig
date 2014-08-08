@@ -1,6 +1,7 @@
 class Player
 
-  attr_reader :name, :score, :dice
+  attr_reader :name, :dice
+  attr_accessor :score
 
   def initialize(name = nil)
     @name = name

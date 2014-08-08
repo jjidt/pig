@@ -27,9 +27,10 @@ P::::::::P          I::::::::I GG:::::::::::::::G
 P::::::::P          I::::::::I   GGG::::::GGG:::G
 PPPPPPPPPP          IIIIIIIIII      GGGGGG   GGGG\n\n"
 
-player_name = prompt("Player, please enter your name")
+player1_name = prompt("Player 1, please enter your name\n")
+player2_name = prompt("player 2, please enter your name")
 
-new_game = Game.new(player_name)
+new_game = Game.new(player1_name, player2_name)
 
 loop do
   system("clear")
@@ -51,10 +52,35 @@ loop do
   P::::::::P          I::::::::I GG:::::::::::::::G
   P::::::::P          I::::::::I   GGG::::::GGG:::G
   PPPPPPPPPP          IIIIIIIIII      GGGGGG   GGGG\n\n"
+
   current_player = new_game.players[new_game.turn]
+  if current_player.has_won?
+    puts "#{current_player.name} has Won!"
+    break
+  end
   choice = prompt("Hello #{current_player.name}\n Press Enter To Roll")
-  dice_value = new_game.take_turn
-  current_player.add_to_score(dice_value.inject(:+))
-  puts "You have rolled a #{dice_value[0]} and a #{dice_value[1]}"
-  prompt("Press Enter For Next Turn")
+  dice_values = new_game.take_turn
+  pre_score = current_player.score
+  if !current_player.rolled_pig?
+    current_player.add_to_score(dice_values.inject(:+))
+    puts "You have rolled a #{dice_values[0]} and a #{dice_values[1]}"
+    loop do
+      player_choice = prompt("enter 'r' to roll again, or 'p' to pass to the other player")
+      case player_choice
+        when 'r'
+          puts "You have chosen to roll again"
+          break
+        when 'p'
+          new_game.turn ^= 1
+          break
+      end
+    end
+
+  else
+    puts "You have rolled a #{dice_values[0]} and a #{dice_values[1]}"
+    puts "You rolled PIG! Your score drops to #{pre_score}, next players turn"
+    current_player.score = pre_score
+    new_game.turn ^= 1
+    prompt("Press Enter To Advance")
+  end
 end

@@ -70,7 +70,7 @@ describe 'Player' do
       expect(test_player.rolled_pig?).to eq true
     end
 
-    it 'checks if none of the dice has a value of 1' do
+    it 'checks if neither of the dice has a value of 1' do
       test_player = Player.new("carl")
       test_player.roll_dice
       test_player.dice[0].number = 2
