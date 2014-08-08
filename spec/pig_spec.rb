@@ -61,6 +61,23 @@ describe 'Player' do
       expect(test_player.dice[0]).to be_an_instance_of Dice
     end
   end
+
+  describe 'rolled_pig?' do
+    it 'checks if one of the dice has a value of 1' do
+      test_player = Player.new("carl")
+      test_player.roll_dice
+      test_player.dice[0].number = 1
+      expect(test_player.rolled_pig?).to eq true
+    end
+
+    it 'checks if none of the dice has a value of 1' do
+      test_player = Player.new("carl")
+      test_player.roll_dice
+      test_player.dice[0].number = 2
+      test_player.dice[1].number = 3
+      expect(test_player.rolled_pig?).to eq false
+    end
+  end
 end
 
 describe 'Game' do

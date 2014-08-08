@@ -18,4 +18,8 @@ class Player
   def roll_dice
     @dice = [Dice.new, Dice.new]
   end
+
+  def rolled_pig?
+    @dice[0].number == 1 || @dice[1].number == 1
+  end
 end

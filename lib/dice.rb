@@ -1,6 +1,6 @@
 class Dice
 
-  attr_reader :number
+  attr_accessor :number
 
   def initialize
     @number = Random.rand(1..6)
