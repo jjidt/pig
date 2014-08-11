@@ -3,7 +3,7 @@ class Player
   attr_reader :name, :dice
   attr_accessor :score
 
-  def initialize(name = nil)
+  def initialize(name)
     @name = name
     @score = 0
   end
