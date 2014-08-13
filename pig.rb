@@ -1,7 +1,6 @@
 require './lib/dice'
 require './lib/player'
 require './lib/game'
-require 'rubocop'
 
 def prompt(text)
   puts "#{text}:  "

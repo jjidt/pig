@@ -1,24 +1,8 @@
-require 'rspec'
-require 'dice'
-require 'player'
-require 'game'
-
-describe 'Dice' do
-  it 'creates a single instance of dice' do
-    test_dice = Dice.new
-    expect(test_dice).to be_an_instance_of Dice
-  end
-
-  it 'initializes with a random number value between 1 and 6' do
-    test_dice = Dice.new
-    expect(test_dice.number).to be_an_instance_of Fixnum
-  end
-
-end
+require 'spec_helper'
 
 describe 'Player' do
   it 'creates a new player' do
-    test_player = Player.new
+    test_player = Player.new("bob")
     expect(test_player).to be_an_instance_of Player
   end
 
@@ -76,36 +60,6 @@ describe 'Player' do
       test_player.dice[0].number = 2
       test_player.dice[1].number = 3
       expect(test_player.rolled_pig?).to eq false
-    end
-  end
-end
-
-describe 'Game' do
-  it 'creates a new game' do
-    test_game = Game.new
-    expect(test_game).to be_an_instance_of Game
-  end
-
-  it 'initializes with two players, one with a name, and one called the computer' do
-    test_game = Game.new("steve")
-    expect(test_game.players[0].name).to eq "steve"
-  end
-
-  it 'sets a turn that starts with the human player' do
-    test_game = Game.new("bob")
-    expect(test_game.turn).to eq 0
-  end
-
-  describe 'take_turn' do
-    it 'has the current player take a turn rolling the dice and returns the dice values' do
-      test_game = Game.new("bob")
-      expect(test_game.take_turn).to be_an_instance_of Array
-    end
-
-    it 'switches the turn counter to the next player' do
-      test_game = Game.new("bob")
-      test_game.take_turn
-      expect(test_game.turn).to eq 1
     end
   end
 end
